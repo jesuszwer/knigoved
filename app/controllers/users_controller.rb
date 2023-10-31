@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   '''
     БЛОК ДЛЯ ПРЕДСТАВЛЕНИЙ
   '''
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
 
   # Страница регистрации пользователя
   def new
-    @user = User.new
+    @user = User.new(session[:user_params])
   end
 
   # Страница редактирования пользователя
@@ -32,14 +31,22 @@ class UsersController < ApplicationController
   '''
     БЛОК ДЛЯ ДЕЙСТВИЙ С БД
   '''
-
   # Создание пользователя
   def create
     @user = User.create(user_params)
     if @user.save
-      redirect_to root_path, notice: "User created!"
+      session.delete(:user_params)
+      redirect_to root_path, notice: "Пользователь создан!"
     else
-      render controller: "registrations", action: "new"
+      if @user.errors[:email].include?("is invalid")
+        flash[:alert] = "Неккоретный формат email"
+      elsif @user.errors[:email].include?("has already been taken")
+        flash[:alert] = "Пользователь с таким email уже существует."
+      else
+        flash[:alert] = "Пожалуйста, заполните обязательные данные в форме. Они обозначены *."
+      end
+      session[:user_params] = user_params
+      redirect_to new_user_path
     end
   end
 

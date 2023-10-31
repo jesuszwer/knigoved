@@ -1,0 +1,21 @@
+body {
+    background-color: #484848;
+    font-family: 'Victor Mono', sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    padding: 48px 0 120px 0;
+
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.title-main {
+    text-align: center;
+}
+
+.required {
+    color: red;
+}

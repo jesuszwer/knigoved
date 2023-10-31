@@ -1,0 +1,70 @@
+.form {
+    width: 300px;
+    /* Примерная ширина формы */
+    margin: 0 auto;
+    /* Центрирование формы по горизонтали */
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-main {
+    text-align: center;
+    /* Выравнивание по центру */
+    margin-top: 20px;
+}
+
+.form-group {
+    margin: 10px 0;
+    /* Вертикальный отступ между группами полей */
+}
+
+.form-lable {
+    display: block;
+    /* Метка отображается как блочный элемент */
+    font-weight: bold;
+    /* Жирный шрифт */
+    margin-bottom: 5px;
+}
+
+.form-text_field {
+    width: 100%;
+    /* Ширина поля 100% ширины родительского контейнера */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-password_field {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-submit {
+    background-color: #007bff;
+    /* Цвет фона кнопки */
+    color: #fff;
+    /* Цвет текста кнопки */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    /* Курсор в виде руки при наведении */
+}
+
+.form-submit:hover {
+    background-color: #4098f7;
+}
+
+/* Стили для поля пароля */
+.form-password_field {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    position: relative;
+    /* Положение относительно последнего символа */
+}
