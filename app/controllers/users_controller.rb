@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   '''
   #TODO Создание пользователя
+  #! Нужно доделать чтоб при отправки submit не редиректорила новую страницу а выводил флеш с ошибкой
   def create
     @user = User.new(user_params)
 
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   #TODO Обновление каких либо данных пользователя
-  #!! ДОДЕЛАТЬ НАДО
+  #!! ДОДЕЛАТЬ НАДО (потом)
   def update
     @user = current_user
 
@@ -80,6 +81,7 @@ class UsersController < ApplicationController
   end
 
   #TODO Обработчик ошибок
+  #! Нужно доделать обработку ошибок и то что нахоидться на 39 строчке
   def handle_registration_errors
     if @user.errors[:email].include?("is invalid") #! Если почта введена не корректная
       flash[:alert] = "Некорректный формат email"
