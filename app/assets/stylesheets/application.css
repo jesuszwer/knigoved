@@ -12,12 +12,14 @@
  *
  *= require_self
  *= require main
+ *= require header
  *= require flash
  *= require form
- *= require index
+ * Разделитель стилей для страниц
+ *= require posts
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kurale&family=Montserrat+Alternates:wght@300;400;500;700&display=swap');
 
 
 /* http://meyerweb.com/eric/tools/css/reset/ */

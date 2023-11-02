@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index,:show, :new,:create,:edit,:update,:destroy] # сам user
   resource :session, only: [:new,:create,:destroy] # ресурс сессии, тут будут создаваться сессии для user
 
+  # delete '/logout', to: 'sessions#destroy'
+
   # Books resourse
   resources :books, only: [:index, :new, :create, :edit, :update, :show, :destroy] # ресурс для books
 

@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   '''
-    БЛОК ДЛЯ ПРЕДСТАВЛЕНИЙ
+
+    БЛОК ДЛЯ СТРАНИЦ
+
   '''
-  # Лист пользователей
+  #TODO Лист пользователей
   def index
     @users = User.all
   end
 
-  # Стриница пользователя
+  #TODO Стриница пользователя
   def show
     @user = User.find_by(id: params[:id])
 
@@ -18,56 +20,75 @@ class UsersController < ApplicationController
     end
   end
 
-  # Страница регистрации пользователя
+  #TODO Страница регистрации пользователя
   def new
     @user = User.new(session[:user_params])
   end
 
-  # Страница редактирования пользователя
+  #TODO Страница редактирования пользователя
   def edit
-
+    @user = current_user
   end
 
   '''
+
     БЛОК ДЛЯ ДЕЙСТВИЙ С БД
+
   '''
-  # Создание пользователя
+  #TODO Создание пользователя
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
+
     if @user.save
-      session.delete(:user_params)
+      session[:user_params].delete
       redirect_to root_path, notice: "Пользователь создан!"
     else
-      if @user.errors[:email].include?("is invalid")
-        flash[:alert] = "Неккоретный формат email"
-      elsif @user.errors[:email].include?("has already been taken")
-        flash[:alert] = "Пользователь с таким email уже существует."
-      else
-        flash[:alert] = "Пожалуйста, заполните обязательные данные в форме. Они обозначены *."
-      end
-      session[:user_params] = user_params
+      handle_registration_errors
       redirect_to new_user_path
     end
   end
 
-  # Обновление каких либо данных пользователя
+  #TODO Обновление каких либо данных пользователя
+  #!! ДОДЕЛАТЬ НАДО
   def update
+    @user = current_user
 
+    if @user.update(user_params)
+      redirect_to user_path(user), notice: "Профиль бы отредактирован!"
+    else
+      flash.now[:alert] = "Не удалось обновить профиль"
+      render :edit # этот способ не работает
+    end
   end
 
-  # Удаление пользователя
+  #TODO Удаление пользователя
   def destroy
 
   end
 
   '''
+
     БЛОК ПОЛЬЗОВАТЕЛЬСКИХ ДЕЙСТВИИ (МЕТОДОВ)
+
   '''
 
-  # беруться параментры пользователя, если они нужны
+  private
+
+  #TODO беруться параментры пользователя, если они нужны
   def user_params
     params.require(:user).permit(:email, :password, :name, :last_name, :age)
   end
 
+  #TODO Обработчик ошибок
+  def handle_registration_errors
+    if @user.errors[:email].include?("is invalid") #! Если почта введена не корректная
+      flash[:alert] = "Некорректный формат email"
+    elsif @user.errors[:email].include?("has already been taken") #! Если почта уже существует и зарегестрированна
+      flash[:alert] = "Пользователь с таким email уже существует."
+    else #! Другие ошибки
+      flash[:alert] = "Пожалуйста, заполните обязательные данные в форме. Они обозначены *."
+    end
+    session[:user_params] = user_params
+  end
 
 end

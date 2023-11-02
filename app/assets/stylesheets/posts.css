@@ -1,0 +1,21 @@
+.posts-blog {
+    display: flex;
+    margin: 0 8px;
+}
+
+.posts-item {
+    max-width: 576px;
+    padding: 6px;
+    width: 100%;
+}
+
+.posts-blog-title {
+    text-transform: uppercase;
+
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.posts-blog-text {
+    font-weight: 300;
+}

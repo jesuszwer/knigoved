@@ -11,16 +11,48 @@
   <body>
     <div class="container">
       <div class="flash-container">
-        <% if flash[:notice].present? %>
+        <% if flash[:notice] %>
           <div class="flash-message alert-success">
             <%= flash[:notice] %>
           </div>
         <% end %>
-        <% if flash[:alert].present? %>
+        <% if flash[:alert] %>
           <div class="flash-message alert-danger">
             <%= flash[:alert] %>
           </div>
         <% end %>
+        <% if flash.now[:notice] %>
+          <div class="flash-message alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <% if flash.now[:alert] %>
+          <div class="flash-message alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
+      <div class="header">
+        <div class="logo-panel">
+          <%= link_to "Книговед", root_path, class: "logo-title" %>
+          <div class="logo-subtitle">Лучше в мире нет</div>
+        </div>
+        <hr class="line">
+        <div class="navbar">
+          <ul>
+            <li class="navbar-item"><%= link_to "Читатели",users_path, class: "navbar-link" %></li>
+            <li class="navbar-item"><%= link_to "Регистрация", new_user_path, class: "navbar-link" %></li>
+            <li class="navbar-item"><%= link_to "Вход", new_session_path, class: "navbar-link" %></li>
+          </ul>
+          <div class="profile-panel">
+            <% if current_user %>
+              <%= "#{current_user.name}, #{current_user.age}" %>
+              <%= button_to "Выйти", session_path, method: :delete %>
+            <% else %>
+              <p>Вы не вошли!</p>
+            <% end %>
+          </div>
+        </div>
       </div>
       <%= yield %>
     </div>

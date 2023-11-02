@@ -1,19 +1,29 @@
 body {
-    background-color: #484848;
-    font-family: 'Victor Mono', sans-serif;
+    background-color: #dfdfdf;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 18px;
 }
 
 .container {
     background-color: #fff;
-    padding: 48px 0 120px 0;
-
-    max-width: 1200px;
-    width: 100%;
     margin: 0 auto;
+    max-width: 1192px;
+    width: 100%;
 }
 
+.block {
+    padding-bottom: 18px;
+}
+
+.line {
+    margin: 7px;
+    border-color: #3e2bd0;
+}
+
+.title,
 .title-main {
     text-align: center;
+    padding: 8px 0;
 }
 
 .required {
