@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_action :check_admin, only: []
+
   # Отображение страницы входа
   def new
   end
