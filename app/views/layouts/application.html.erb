@@ -40,6 +40,10 @@
         <div class="navbar">
           <ul>
             <li class="navbar-item"><%= link_to "Читатели",users_path, class: "navbar-link" %></li>
+            <li class="navbar-item"><%= link_to "Коллекция",books_path, class: "navbar-link" %></li>
+            <% if current_user%>
+              <li class="navbar-item"><%= link_to "Добавить книгу", new_book_path, class: "navbar-link" %></li>
+            <% end %>
           </ul>
         </div>
       </div>

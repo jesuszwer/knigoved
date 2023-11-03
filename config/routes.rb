@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "posts#index"
 
   # Users resourse
+
+  # users_path
   resources :users, only: [:index,:show, :new,:create,:edit,:update,:destroy] # сам user
   resource :session, only: [:new,:create,:destroy] # ресурс сессии, тут будут создаваться сессии для user
 

@@ -1,37 +1,33 @@
 class SessionsController < ApplicationController
 
-  '''
-
-  БЛОК ДЛЯ СТРАНИЦ
-
-  '''
-
-  #TODO Страница создания
+  # Отображение страницы входа
   def new
   end
 
-  '''
-
-    БЛОК ДЛЯ ДЕЙСТВИЙ С БД
-
-  '''
-
-  #TODO Создание сессии
+  # Обработка попытки входа
   def create
-    user = User.find_by(email: params[:email]) #! Поиск пользователя
+    # Поиск пользователя по адресу электронной почты
+    user = User.find_by(email: params[:email])
+
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id  #! Если есть
+      # Если пользователь существует и пароль верен, устанавливаем идентификатор пользователя в сессии
+      session[:user_id] = user.id
+      # Перенаправляем пользователя на главную страницу с уведомлением о успешном входе
       redirect_to root_path, notice: "Вы вошли под именем, #{user.name}"
     else
-      flash[:alert] = "Неверные учетные данные. Пожалуйста, попробуйте снова." #! Если нету
+      # В случае неверных учетных данных, устанавливаем сообщение об ошибке и перенаправляем на страницу входа
+      flash[:alert] = "Неверные учетные данные. Пожалуйста, попробуйте снова."
       redirect_to new_session_path
     end
   end
 
-  #TODO Удаление сессии
+  # Выход пользователя из системы
   def destroy
-    session.delete(:user_id) #! Удаляем данные сессии
-    cookies.delete(:user_id) #! Удаляем куку user_id
+    # Удаляем идентификатор пользователя из сессии
+    session.delete(:user_id)
+    # Удаляем куку user_id
+    cookies.delete(:user_id)
+    # Перенаправляем пользователя на главную страницу с уведомлением о успешном выходе из системы
     redirect_to root_path, notice: "Вы успешно вышли из системы."
   end
 end

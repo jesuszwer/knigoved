@@ -1,0 +1,40 @@
+<div class="block">
+  <h2 class="title-main">Регистрация пользоватлея</h2>
+  <div class="form">
+    <%= form_with model: @book do |f|%>
+      <%# Имя %>
+      <div class="form-main">
+        <%# Название %>
+        <div class="form-group">
+          <%= f.label :title, "Название".html_safe, class: "form-lable" %>
+          <%= f.text_field :title, class: "form-text_field" %>
+        </div>
+        <%# Описание %>
+        <div class="form-group">
+          <%= f.label :description, "Описание".html_safe, class: "form-lable" %>
+          <%= f.text_area :description, class: "form-text_area" %>
+          <div class="password-visibility">
+            <span id="last-char"></span>
+          </div>
+        </div>
+        <%# Автор\Авторы %>
+        <div class="form-group">
+          <%= f.label :author, "Автор".html_safe, class: "form-lable" %>
+          <%= f.text_field :author, class: "form-text_field" %>
+        </div>
+        <%# Год %>
+        <div class="form-group">
+          <%= f.label :year, "Год выпуска", class: "form-lable" %>
+          <%= f.text_field :year, class: "form-text_field" %>
+        </div>
+        <%# Жанр %>
+        <div class="form-group">
+          <%= f.label :genre, "Жанр".html_safe, class: "form-lable" %>
+          <%= f.text_field :genre, class: "form-text_field" %>
+        </div>
+        <%# Кнопка регистрации %>
+        <%= f.submit "Добавить в коллекцию", class: "form-submit"%>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="block">
+  <h2><%= @book.title %></h2>
+  <p><%= @book.description %></p>
+  <%= link_to "Редактровать", edit_book_path(@book.id) %>
+  <%= link_to "Коллекция", books_path %>
+</div>

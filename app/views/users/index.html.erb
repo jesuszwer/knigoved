@@ -1,6 +1,8 @@
-<h2 class="title-main">Все пользователи</h2>
-<% @users.each do |user| %>
-  <%= link_to user.id, user_path(user.id) %>
-<% end %>
-<br>
-<%= link_to "Back", root_path %>
+<div class="block">
+  <h2 class="title-main">Все пользователи</h2>
+  <% @users.each do |user| %>
+    <%= link_to user.id, user_path(user.id) %>
+  <% end %>
+  <br>
+  <%= link_to "Back", root_path %>
+</div>
